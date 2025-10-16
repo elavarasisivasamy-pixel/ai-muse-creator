@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "AI Muse Creator",
+  "version": "1.0",
+  "description": "Voice-to-multimodal AI creator using Gemini Nano",
+  "permissions": ["activeTab", "storage", "unlimitedStorage"],
+  "host_permissions": ["https://api.stability.ai/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "AI Muse"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {
+  "16": "icon16.png",
+  "48": "icon48.png",
+  "128": "icon128.png"
+}
+  
+}

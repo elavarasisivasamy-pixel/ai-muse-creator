@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <script src="qrcode.min.js"></script> <!-- QR lib -->
+</head>
+<body>
+  <div id="container">
+    <h1>AI Muse Creator</h1>
+    
+    <!-- Feature 1: Voice Input -->
+    <button id="mic-btn">🎤 Start Voice</button>
+    <p id="transcript"></p>
+    <p id="lang-mood"></p> <!-- Feature 2: Lang + Mood -->
+    
+    <!-- Feature 3: Generate -->
+    <button id="generate-btn" disabled>Generate Text + Image</button>
+    <div id="output">
+      <textarea id="output-text" placeholder="Refined text here..."></textarea>
+      <img id="output-image" alt="" style="max-width: 100%; display: none;">
+      <p id="alt-text"></p>
+    </div>
+    
+    <!-- Feature 4: Post-Gen -->
+    <button id="regenerate-btn" style="display: none;">Regenerate</button>
+    
+    <!-- Feature 5: Voice Edit -->
+    <button id="edit-mic-btn" style="display: none;">🎤 Voice Edit Image</button>
+    
+    <!-- Feature 6: Upload Grid -->
+    <input type="file" id="upload-input" multiple accept="image/*" style="display: none;">
+    <button id="upload-btn">Upload Images (Optional)</button>
+    <div id="upload-grid" class="grid"></div>
+    
+    <!-- Feature 7: QR Share -->
+    <button id="share-btn" style="display: none;">Share via QR</button>
+    <canvas id="qr-canvas" style="display: none;"></canvas>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
