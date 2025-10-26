@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Muse Permissions</title>
+  <style>
+    body { font-family: Arial; padding: 20px; text-align: center; }
+    button { padding: 10px; background: #4285f4; color: white; border: none; border-radius: 5px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>AI Muse Creator – Grant Microphone Access</h1>
+  <p>To use voice features, click below to enable mic.</p>
+  <button id="request-mic">Enable Microphone</button>
+  <p id="status"></p>
+  <script>
+    document.getElementById('request-mic').addEventListener('click', () => {
+      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.onstart = () => { document.getElementById('status').textContent = 'Mic enabled! Close and test popup.'; };
+      recognition.onerror = (e) => { 
+        document.getElementById('status').textContent = `Error: ${e.error}. Check chrome://settings/content/microphone.`; 
+      };
+      recognition.start();
+    });
+  </script>
+</body>
+</html>
