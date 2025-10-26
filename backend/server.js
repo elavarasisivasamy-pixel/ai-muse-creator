@@ -9,8 +9,7 @@ import { createClient } from '@supabase/supabase-js'; // Optional for Supabase
 const app = express();
 app.use(cors());
 app.use(express.json());
-
-const openai = new OpenAI({ apiKey: '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' });  // Replace with real key
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY || '';
 // Optional: Supabase (comment out if not using)
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 
