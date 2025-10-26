@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Updated manifest.json with Content Security Policy
 {
   "manifest_version": 3,
@@ -26,4 +27,34 @@
     "48": "icon48.png",
     "128": "icon128.png"
   }
+=======
+// Updated manifest.json with Content Security Policy
+{
+  "manifest_version": 3,
+  "name": "AI Muse Creator",
+  "version": "1.0",
+  "description": "A Chrome extension for voice-based AI muse creation with mood detection, text generation, image prompting, and sharing.",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://api.openai.com/*",
+    "https://api.stability.ai/*",
+    "http://localhost:3000/*",  // For local back-end development
+    "https://*/*"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "AI Muse Creator"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+>>>>>>> d67b6e54235b0ba181efedd522db3f5840c7de45
 }

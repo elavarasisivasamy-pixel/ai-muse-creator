@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,4 +51,58 @@
   <script src="qrcode.min.js"></script> <!-- Local QRCode -->
   <script src="popup.js"></script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Muse Creator</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>AI Muse Creator</h1>
+    
+    <!-- Voice Recognition Section -->
+    <section id="voice-section">
+      <h2>Record Your Muse</h2>
+      <button id="start-recording" class="btn-primary">🎤 Start Recording</button>
+      <button id="stop-recording" class="btn-secondary" disabled>Stop</button>
+      <div id="language-display">Language: en-US (server-side)</div>
+      <div id="mood-display">Mood: Detecting...</div>
+      <div id="transcription"></div>
+    </section>
+
+    <!-- Edit Section -->
+    <section id="edit-section" style="display: none;">
+      <h2>Edit Text</h2>
+      <textarea id="edit-text" placeholder="Edit your transcribed text here..."></textarea>
+      <button id="voice-edit" class="btn-secondary">🔊 Edit via Voice</button>
+      <button id="generate-prompt" class="btn-primary">Generate Image Prompt</button>
+    </section>
+
+    <!-- Generated Prompt Section -->
+    <section id="prompt-section" style="display: none;">
+      <h2>Generated Prompt</h2>
+      <div id="prompt-text"></div>
+      <!--<button id="play-voiceover" class="btn-secondary">▶️ Play Voice Over</button>-->
+      <button id="generate-image" class="btn-primary">Generate Image</button>
+    </section>
+
+    <!-- Image Section -->
+    <section id="image-section" style="display: none;">
+      <h2>Your Muse Image</h2>
+      <img id="generated-image" alt="Generated Image" style="max-width: 100%; height: auto;">
+      <button id="download-image" class="btn-primary">⬇️ Download Image</button>
+      <button id="share-qr" class="btn-secondary">📱 Share QR</button>
+      <button id="share-url" class="btn-secondary">🔗 Share URL</button>
+    </section>
+
+    <div id="status"></div>
+  </div>
+  <script src="qrcode.min.js"></script> <!-- Local QRCode -->
+  <script src="popup.js"></script>
+</body>
+>>>>>>> d67b6e54235b0ba181efedd522db3f5840c7de45
 </html>

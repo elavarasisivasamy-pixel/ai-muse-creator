@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* popup.css */
 body {
   width: 400px;
@@ -68,4 +69,76 @@ section {
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+=======
+/* popup.css */
+body {
+  width: 400px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.container {
+  text-align: center;
+}
+
+h1, h2 {
+  color: #333;
+}
+
+button {
+  margin: 5px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-primary {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #008CBA;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #007B9A;
+}
+
+#transcription, #edit-text, #prompt-text {
+  width: 100%;
+  min-height: 60px;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+#generated-image {
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+#status {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #e7f3ff;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #0066cc;
+}
+
+section {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+>>>>>>> d67b6e54235b0ba181efedd522db3f5840c7de45
 }
