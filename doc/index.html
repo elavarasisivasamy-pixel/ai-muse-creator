@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Muse Creator Demo</title>
+  <link rel="stylesheet" href="popup.css">  <!-- Your CSS -->
+  <script src="qrcode.min.js"></script>
+</head>
+<body>
+  <div id="container">
+    <h1>AI Muse Creator: Voice-to-Art Demo</h1>
+    <p>Preview the popup UI below. For full extension, load unpacked from repo.</p>
+    <!-- Embed your popup.html content here -->
+    <button id="mic-btn">🎤 Start Voice (Demo)</button>
+    <p id="transcript"></p>
+    <p id="lang-mood"></p>
+    <button id="generate-btn" disabled>Generate Text & Image</button>
+    <div id="output">
+      <textarea id="output-text" placeholder="Refined text..."></textarea>
+      <img id="output-image" style="display: none; max-width: 100%;">
+    </div>
+  </div>
+  <script src="popup.js"></script>  <!-- Your JS (static preview) -->
+</body>
+</html>
