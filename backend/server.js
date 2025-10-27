@@ -3,6 +3,7 @@ import 'dotenv/config';  // Loads .env vars into process.env
 import express from 'express';
 import cors from 'cors';
 import OpenAI from 'openai';
+import path from 'path';
 import { createClient } from '@supabase/supabase-js'; // Optional for Supabase
 import { pipeline } from '@xenova/transformers';
 
