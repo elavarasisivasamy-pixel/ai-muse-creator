@@ -11,11 +11,10 @@ Voice-to-image AI extension for Chrome Built-in AI Challenge 2025.
 ## Features
 1. Voice recognition + lang check.
 2. Mood detection pre-gen.
-3. Generate simplified text + image prompt + auto alt.
+3. Generate simplified text + image prompt.
 4. Post-gen review/regenerate.
 5. Voice edit image (Canvas-based).
-6. Optional upload grid.
-7. QR code share.
+6. QR code or URL share.
 
 ## Challenge Fit
 Uses Prompt API (Gemini Nano), Translator, Summarizer, Writer. On-device for privacy.
@@ -24,4 +23,5 @@ Uses Prompt API (Gemini Nano), Translator, Summarizer, Writer. On-device for pri
 - Full on-device images: Add Transformers.js (npm i @xenova/transformers, but bundle for extension).
 - Backend: If needed, add Node/Express for cloud AI (e.g., Vercel), but not required.
 
+Load unpacked: Download repo zip → chrome://extensions/ → Load unpacked → Select folder.
 License: MIT. Submit to devpost.com!
