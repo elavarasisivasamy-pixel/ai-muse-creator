@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Muse Creator Demo</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="qrcode.min.js"></script>
+</head>
+<body>
+  <div id="container">
+    <h1>AI Muse Creator Demo</h1>
+    <p>Preview the extension popup. For full version, load unpacked from repo.</p>
+    <button id="mic-btn">🎤 Start Voice (Demo)</button>
+    <p id="transcript"></p>
+    <p id="lang-mood"></p>
+    <button id="generate-btn" disabled>Generate Text & Image</button>
+    <div id="output">
+      <p id="image-prompt" style="font-style: italic; color: #666;"></p>
+      <button id="voice-over-btn" style="display: none;">🔊 Play Voice-Over</button>
+      <textarea id="output-text" placeholder="Refined text..."></textarea>
+      <img id="output-image" style="display: none; max-width: 100%;">
+      <p id="alt-text"></p>
+      <button id="download-btn" style="display: none;">💾 Download Image</button>
+    </div>
+    <p>Full Extension: Download repo → chrome://extensions/ → Load unpacked → Select folder.</p>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
