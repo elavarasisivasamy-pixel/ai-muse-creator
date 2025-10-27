@@ -4,39 +4,54 @@ import express from 'express';
 import cors from 'cors';
 import OpenAI from 'openai';
 import { createClient } from '@supabase/supabase-js'; // Optional for Supabase
-
+import { pipeline } from '@xenova/transformers';
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY || '';
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY, // Use env var for security.
+});
+
+// Then in your async function (e.g., route handler):
+async function handleRequest(req, res) {
+  // ... lang detection code ...
+  
+  try {
+    const completion = await openai.chat.completions.create({
+      model: 'gpt-4o-mini', // Or your preferred model.
+      messages: [{ role: 'user', content: 'Your prompt here' }],
+    });
+    res.json({ result: completion.choices[0].message.content });
+  } catch (error) {
+    console.error('OpenAI error:', error);
+    res.status(500).json({ error: 'AI generation failed' });
+  }
+}
 // Optional: Supabase (comment out if not using)
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 
 // Language Detection Setup (Async, Lazy-Loaded)
-let langDetector = null;
+let langDetector;
+
 async function initLangDetector() {
-  if (langDetector === null) {
-    // Optional: Set cache dir
-    // env.cacheDir = './.cache';
-    
-    langDetector = await pipeline('text-classification', 'papluca/xlm-roberta-base-language-detection');
-    console.log('Language detector loaded!');
+  if (!langDetector) {
+    try {
+      langDetector = await pipeline('text-classification', 'Xenova/distilbert-base-multilingual-cased-sentiment', { quantized: true });
+      // Adjust the model if you're using a specific one for lang detection (e.g., 'papluca/xlm-roberta-base-language-detection').
+    } catch (error) {
+      console.error('Failed to init lang detector:', error);
+      // Fallback: return null or a mock function.
+    }
   }
   return langDetector;
 }
-
 async function detectLanguage(text) {
-  try {
-    await initLangDetector();
-    const result = await langDetector(text, { topk: 1 });
-    return result[0].label; // e.g., 'en'
-  } catch (err) {
-    console.error('Lang detection error:', err);
-    return 'en'; // Fallback
-  }
+  const detector = await initLangDetector();
+  if (!detector) return 'en'; // Fallback language.
+  const result = await detector(text);
+  return result[0].label; // Adjust based on your model's output.
 }
-
 app.post('/api/generate-prompt', async (req, res) => {
   try {
     const { text, lang, mood } = req.body;
