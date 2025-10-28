@@ -1,4 +1,4 @@
-
+const BACKEND_URL = 'ai-muse-creator-5suo7v8et-elavarasis-projects-428b52df.vercel.app';
 // popup.js (Updated - No External Libs)
 class AIMuseCreator {
   constructor() {
