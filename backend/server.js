@@ -1,9 +1,10 @@
 // server.js - Fully ESM-Compatible Fix
 import 'dotenv/config';  // Loads .env vars into process.env
 import express from 'express';
+import mongoose from 'mongoose';
 import cors from 'cors';
 import OpenAI from 'openai';
-import path from 'path';
+import path from 'path'
 import { createClient } from '@supabase/supabase-js'; // Optional for Supabase
 import { pipeline } from '@xenova/transformers';
 
@@ -13,6 +14,8 @@ app.use(express.json());
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY, // Use env var for security.
 });
+export default app;
+app.get('/health', (req, res) => res.send('OK'));
 
 // Then in your async function (e.g., route handler):
 async function handleRequest(req, res) {
