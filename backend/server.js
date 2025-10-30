@@ -8,14 +8,11 @@ import OpenAI from 'openai';
 import path from 'path'
 import { createClient } from '@supabase/supabase-js'; // Optional for Supabase
 import { pipeline } from '@xenova/transformers';
-require('dotenv').config();
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY || '';
+
 const app = express();
 app.use(cors());
 app.use(express.json());
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY, // Use env var for security.
-});
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY || '';
 export default app;
 app.get('/health', (req, res) => res.send('OK'));
 
