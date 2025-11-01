@@ -8,11 +8,12 @@ import OpenAI from 'openai';
 import path from 'path'
 import { createClient } from '@supabase/supabase-js'; // Optional for Supabase
 import { pipeline } from '@xenova/transformers';
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 const app = express();
+app.use(express.json({ limit: '10mb' }));  // Parses POST bodies
 app.use(cors());
 app.use(express.json());
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY || '';
 export default app;
 app.get('/health', (req, res) => res.send('OK'));
 
@@ -55,6 +56,28 @@ async function detectLanguage(text) {
   const result = await detector(text);
   return result[0].label; // Adjust based on your model's output.
 }
+app.post('/analyze-mood', async (req, res) => {
+  try {
+    const { transcript } = req.body;
+    if (!transcript) return res.status(400).json({ error: 'Transcript required' });
+
+    // Mood analysis (rule-based fallback)
+    let mood = 'neutral', style = 'casual';
+    const positiveWords = ['happy', 'excited', 'good', 'great', 'love', 'awesome', 'joy', 'fun'];
+    const negativeWords = ['sad', 'angry', 'bad', 'hate', 'terrible', 'fear', 'worried'];
+    const lowerTranscript = transcript.toLowerCase();
+    let score = 0;
+    positiveWords.forEach((word) => { if (lowerTranscript.includes(word)) score += 1; });
+    negativeWords.forEach((word) => { if (lowerTranscript.includes(word)) score -= 1; });
+    mood = score > 0 ? 'positive' : (score < 0 ? 'negative' : 'neutral');
+    style = lowerTranscript.includes('!') || lowerTranscript.includes('?') ? 'casual' : 'formal';
+
+    res.json({ mood, style });
+  } catch (error) {
+    console.error('Mood analysis error:', error);
+    res.status(500).json({ mood: 'neutral', style: 'casual' });
+  }
+});
 app.post('/api/generate-prompt', async (req, res) => {
   try {
     const { text, lang, mood } = req.body;
